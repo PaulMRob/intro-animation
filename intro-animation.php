@@ -21,9 +21,14 @@ add_action( 'wp_enqueue_scripts', function() {
 add_action( 'wp_body_open', function() {
     if ( is_front_page() ) : ?>
         <div id="intro-overlay">
-            <div class="intro-animation">
-                <h1 class="fade-in">From SCI IT</h1>
-            </div>
+            <!-- Background images -->
+            <div class="intro-screen screen1"></div>
+            <div class="intro-screen screen2"></div>
+
+            <!-- Audio elements -->
+            <audio id="audio1" src="<?php echo plugin_dir_url( __FILE__ ); ?>sounds/thunder1.mp3"></audio>
+            <audio id="audio2" src="<?php echo plugin_dir_url( __FILE__ ); ?>sounds/evil-laugh2.mp3"></audio>
         </div>
     <?php endif;
 });
+

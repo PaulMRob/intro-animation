@@ -1,27 +1,44 @@
 #intro-overlay {
     position: fixed;
     inset: 0;
-    background: #000;
-    /* Change to brand color */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: black;
     z-index: 9999;
+    overflow: hidden;
 }
 
-.fade-in {
-    color: #fff;
-    font-size: 2rem;
+.intro-screen {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
     opacity: 0;
-    animation: fadeIn 2s forwards;
+    transition: opacity 2s ease;
 }
 
-@keyframes fadeIn {
-    from {
+/* Background images */
+.screen1 {
+    background-image: url('bg1.jpg');
+}
+
+.screen2 {
+    background-image: url('bg2.jpg');
+}
+
+/* Pulse effect */
+.pulse {
+    animation: pulseLight 1.5s forwards;
+}
+
+@keyframes pulseLight {
+    0% {
         opacity: 0;
     }
 
-    to {
+    50% {
         opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
     }
 }
