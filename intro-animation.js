@@ -7,28 +7,36 @@ document.addEventListener("DOMContentLoaded", () => {
   const audio1 = document.getElementById("audio1");
   const audio2 = document.getElementById("audio2");
 
-  // 1) Black screen initially (default)
-  setTimeout(() => {
-    // 2) Light pulse + thunder
+  // Step 1 → start pulse + audio1
+  function startPulse() {
     screen1.classList.add("pulse");
     audio1.play();
-  }, 500);
+  }
 
-  // 3) Back to black
-  setTimeout(() => {
+  // Step 2 → after pulse animation ends, go back to black
+  screen1.addEventListener("animationend", () => {
     screen1.classList.remove("pulse");
-  }, 2500);
+    // Wait for audio1 to finish before continuing
+    audio1.onended = startFadeIn;
+  });
 
-  // 4) Fade in second image + audio2
-  setTimeout(() => {
+  // Step 3 → fade in screen2 + audio2
+  function startFadeIn() {
+    screen2.style.transition = "opacity 2s ease";
     screen2.style.opacity = "1";
     audio2.play();
-  }, 3000);
 
-  // 5) Fade everything away -> reveal site
-  setTimeout(() => {
+    // When audio2 ends → fade overlay out
+    audio2.onended = finishIntro;
+  }
+
+  // Step 4 → remove overlay
+  function finishIntro() {
     overlay.style.transition = "opacity 2s ease";
     overlay.style.opacity = "0";
     setTimeout(() => overlay.remove(), 2000);
-  }, 6000);
+  }
+
+  // Kick it off
+  startPulse();
 });

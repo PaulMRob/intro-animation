@@ -17,11 +17,11 @@
 
 /* Background images */
 .screen1 {
-    background-image: url('bg1.jpg');
+    background-image: url('./images/cthulhu.webp');
 }
 
 .screen2 {
-    background-image: url('bg2.jpg');
+    background-image: url('./images/sci.jpg');
 }
 
 /* Pulse effect */
